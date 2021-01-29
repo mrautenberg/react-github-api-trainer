@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import UserItem from './components/UserItem'
 
 const App = () => {
 
   // vi kan ha hårdkodade världen eller
   // olika datatyper som vi vill initiera
   const [login, setLogin] = useState(null);
+  const [showData, setShowData] = useState(false);
 
   const API_URL = "https://api.github.com/users/patrik-fredlund"
 
@@ -26,7 +28,10 @@ const App = () => {
 
   return (
     <div>
-      our state is: {login}
+      <button onClick={() => setShowData(true)}>
+        Show data from Users.js file
+      </button>
+      {showData ? <UserItem login={login} /> : null}
     </div>
   );
 }
